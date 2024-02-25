@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,-scale=1.0">
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="Box1">
+    <h1>Registration Form</h1>
+  </div>
+<div class="Box2">
+    ชื่อจริง
+    <input class="form" name="firstname" type="text">
+</div>
+<br>
+<div class="Box2">
+    นามสกุล
+    <input class="form" name="Lastname" type="text">
+</div>
+<br>
+<div class="Box2">
+    อายุ
+    <input class="form" name="age" type="text">
+</div>
+<br>
+<div class="Box2">
+    เพศ
+    <br>
+    <input class="form" name="gender" value="male" type="radio">ชาย
+    <br>
+    <input class="form" name="gender" value="female" type="radio">หญิง
+    <br>
+    <input class="form" name="gender" value="not_specified" type="radio">ไม่ระบุ
+</div>
+<br>
+<div class="Box2">
+    สิ่งที่สนใจ
+    <br>
+    <input class="form" name="interest" value="reading" type="checkbox">อ่านหนังสือ
+    <br>
+    <input class="form" name="interest" value="music" type="checkbox">เล่นดนตรี
+    <br>
+    <input class="form" name="interest" value="gaming" type="checkbox">เลนเกม
+</div>
+<br>
+<div class="Box2">
+    คำอธิบายเพิ่ม
+    <input class="form" name="description" type="text">
+</div>
+<br>
+<div class="Box2">
+    <button type="submit" onclick="submitData()">ส่งข้อมูล</button>
+</div>
+
+  <script>
+    function submitData() {
+      let firstNameDOM = document.querySelector('input[name="firstname"]');
+      let lastNameDOM = document.querySelector('input[name="Lastname"]');
+      let ageDOM = document.querySelector('input[name="age"]');
+
+      let genderDOM = document.querySelector('input[name="gender"]:checked');
+      let interestDOMs = document.querySelectorAll('input[name="interest"]:checked');
+
+      let descriptionDOM = document.querySelector('input[name="description"]');
+
+      let interests = [];
+      for (let i = 0; i < interestDOMs.length; i++) {
+        interests.push(interestDOMs[i].value);
+      }
+
+      let userData = {
+        firstname: firstNameDOM.value,
+        lastname: lastNameDOM.value,
+        age: ageDOM.value,
+        gender: genderDOM.value,
+        description: descriptionDOM.value,
+        interests: interests.join(', '),
+      };
+
+      console.log('submit data', userData);
+    }
+  </script>
+</body>
+</html>
